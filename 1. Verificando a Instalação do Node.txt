@@ -1,0 +1,37 @@
+1. Verificando a Instalação do Node.js
+Antes de tudo, é necessário ter o Node.js instalado no seu sistema. O Node.js é um ambiente de execução JavaScript que permite executar código JavaScript fora de um navegador.
+
+Comando: node -v
+Objetivo: Verificar a versão instalada do Node.js. Se o Node.js não estiver instalado, você precisará baixá-lo do site oficial do Node.js.
+2. Navegando até o Diretório
+Após garantir que o Node.js está instalado, o próximo passo é navegar até o diretório onde o arquivo server.js está localizado.
+
+Comando: cd caminho/para/seu/diretorio
+Objetivo: O comando cd (change directory) muda o diretório atual do terminal para o diretório onde seu arquivo de servidor está. Substitua caminho/para/seu/diretorio pelo caminho real.
+3. Instalando Dependências
+O server.js utiliza algumas bibliotecas, como express, body-parser, e cors. Para que o código funcione corretamente, você precisa instalar essas dependências.
+
+Comando:
+bash
+
+Copiar
+npm init -y
+npm install express body-parser cors
+
+Objetivo:
+npm init -y: Cria um arquivo package.json com as configurações padrão. Esse arquivo gerencia as dependências do seu projeto.
+npm install express body-parser cors: Instala as bibliotecas necessárias e as adiciona ao package.json.
+4. Iniciando o Servidor
+Agora que tudo está configurado, você pode iniciar o servidor.
+
+Comando: node server.js
+Objetivo: Esse comando executa o arquivo server.js, que inicia o servidor Express. O servidor começa a escutar na porta 3000 por padrão, conforme especificado no código.
+5. Verificando se o Servidor Está Rodando
+Após executar o comando para iniciar o servidor, você deve ver uma mensagem no terminal:
+
+
+Copiar
+Servidor rodando em http://localhost:3000
+Objetivo: Isso indica que o servidor está ativo e você pode acessar as rotas definidas no arquivo server.js através de um navegador ou ferramenta de testes de API (como Postman) na URL http://localhost:3000/tasks.
+Resumo
+Esses passos são essenciais para configurar e iniciar um servidor básico com Node.js e Express. Uma vez que o servidor esteja em execução, você pode começar a interagir com a API, enviando e recebendo dados através das rotas definidas no seu código.
