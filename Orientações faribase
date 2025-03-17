@@ -1,0 +1,17 @@
+Orientações
+Configurar um projeto no Firebase.
+Criar uma aplicação simples em HTML, CSS e JavaScript.
+Integrar o Firebase para adicionar tarefas.
+Pré-requisitos
+Node.js e npm instalados.
+Conta no Firebase.
+Passo 1: Configurando o Firebase
+Criar um novo projeto no Firebase:
+Acesse Firebase Console.
+Clique em "Adicionar projeto" e siga as instruções.
+Habilitar Firestore:
+No painel do seu projeto, vá para "Firestore Database" e clique em "Criar banco de dados".
+Selecione o modo de teste e clique em "Próximo".
+Adicionar um aplicativo web:
+Clique em "Adicionar aplicativo" e escolha "Web".
+Registre o aplicativo e copie as configurações do Firebase (apiKey, authDomain, etc.).
