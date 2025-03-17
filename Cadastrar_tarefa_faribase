@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Tarefas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Adicionar Tarefas</h1>
+        <input type="text" id="taskInput" placeholder="Digite sua tarefa">
+        <button id="addTaskButton">Adicionar Tarefa</button>
+        <ul id="taskList"></ul>
+    </div>
+    <!-- Importando Firebase usando módulos -->
+    <script type="module">
+        // Importações do Firebase
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+        import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+
+        // Configurações do Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyBB011le4krq3lUosziQOAzj4X195xuMvk",
+            authDomain: "backend-768b5.firebaseapp.com",
+            projectId: "backend-768b5",
+            storageBucket: "backend-768b5.firebasestorage.app",
+            messagingSenderId: "1014539624383",
+            appId: "1:1014539624383:web:1bcd0ac00c676a33624b0a",
+            measurementId: "G-Y5SF2PJ1XQ"
+          };
+
+        // Inicializando o Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Adicionando tarefa
+        document.getElementById('addTaskButton').addEventListener('click', async () => {
+            const taskInput = document.getElementById('taskInput');
+            const task = taskInput.value;
+
+            if (task) {
+                try {
+                    await addDoc(collection(db, 'tarefas'), { task });
+                    taskInput.value = '';
+                    loadTasks();
+                } catch (error) {
+                    console.error("Erro ao adicionar tarefa: ", error);
+                }
+            }
+        });
+
+        // Carregar tarefas
+        const loadTasks = async () => {
+            const taskList = document.getElementById('taskList');
+            taskList.innerHTML = '';
+
+            const snapshot = await getDocs(collection(db, 'tarefas'));
+            snapshot.forEach(doc => {
+                const li = document.createElement('li');
+                li.textContent = doc.data().task;
+                taskList.appendChild(li);
+            });
+        };
+
+        // Chamar a função para carregar as tarefas ao iniciar
+        loadTasks();
+    </script>
+</body>
+</html>
